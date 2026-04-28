@@ -5,6 +5,7 @@ const results = document.getElementById("results");
 const predictionLabel = document.getElementById("predictionLabel");
 const predictionConfidence = document.getElementById("predictionConfidence");
 const predictionBodyPart = document.getElementById("predictionBodyPart");
+const predictionDisorder = document.getElementById("predictionDisorder");
 const recommendationList = document.getElementById("recommendationList");
 const template = document.getElementById("recommendationTemplate");
 
@@ -27,6 +28,7 @@ form.addEventListener("submit", async (event) => {
   predictionLabel.textContent = "Analyzing image...";
   predictionConfidence.textContent = "";
   predictionBodyPart.textContent = "";
+  predictionDisorder.textContent = "";
   results.classList.remove("hidden");
 
   try {
@@ -41,9 +43,19 @@ form.addEventListener("submit", async (event) => {
     }
 
     const { prediction, recommendations } = payload;
-    predictionLabel.textContent = `Prediction: ${prediction.label}`;
-    predictionConfidence.textContent = prediction.confidence !== null ? `Confidence: ${(prediction.confidence * 100).toFixed(2)}%` : "Confidence: not available";
-    predictionBodyPart.textContent = `Body part: ${prediction.body_part}`;
+    predictionLabel.textContent = prediction.has_disorder ? "Disorder detected" : "No disorder detected";
+    predictionConfidence.textContent = prediction.body_part_confidence !== null
+      ? `Body part confidence: ${(prediction.body_part_confidence * 100).toFixed(2)}%`
+      : "Body part confidence: not available";
+    predictionBodyPart.textContent = `Predicted body part: ${prediction.body_part}`;
+    predictionDisorder.textContent = prediction.disorder_confidence !== null
+      ? `Predicted disorder: ${prediction.disorder} (${(prediction.disorder_confidence * 100).toFixed(2)}%)`
+      : `Predicted disorder: ${prediction.disorder}`;
+
+    if (!prediction.has_disorder) {
+      recommendationList.innerHTML = "<div class='exercise-card'><h3>No disorder detected</h3><p class='overview'>The image looks normal, so exercise recommendations are not shown.</p></div>";
+      return;
+    }
 
     recommendations.forEach((item) => {
       const clone = template.content.cloneNode(true);

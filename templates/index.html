@@ -23,7 +23,7 @@
           </p>
 
           <div class="status-row">
-            <span class="status-pill">Model: ready</span>
+            <span class="status-pill">Models: ready</span>
             <span class="status-pill">API key: {{ 'loaded' if api_key_loaded else 'fallback mode' }}</span>
             <span class="status-pill">Bundle: {{ model_path }}</span>
           </div>
@@ -42,20 +42,6 @@
 
           <div class="field-grid">
             <label>
-              Body part
-              <select name="body_part">
-                <option value="general">General</option>
-                <option value="shoulder">Shoulder</option>
-                <option value="wrist">Wrist</option>
-                <option value="hand">Hand</option>
-                <option value="finger">Finger</option>
-                <option value="elbow">Elbow</option>
-                <option value="forearm">Forearm</option>
-                <option value="humerus">Humerus</option>
-              </select>
-            </label>
-
-            <label>
               Exercise results
               <select name="top_k">
                 <option value="2">2 recommendations</option>
@@ -66,7 +52,7 @@
           </div>
 
           <button type="submit" class="primary-btn">Predict disorder</button>
-          <p id="formHint" class="hint">Uploads stay local to this server. Exercise suggestions are fetched server-side.</p>
+          <p id="formHint" class="hint">Uploads stay local to this server. The app predicts the body part automatically, then fetches exercise suggestions server-side if a disorder is detected.</p>
         </form>
       </section>
 
@@ -76,6 +62,7 @@
           <h2 id="predictionLabel">Waiting for input</h2>
           <p id="predictionConfidence" class="result-detail"></p>
           <p id="predictionBodyPart" class="result-detail"></p>
+          <p id="predictionDisorder" class="result-detail"></p>
         </article>
 
         <article class="panel result-panel">
@@ -88,9 +75,9 @@
         <h2>How it works</h2>
         <ol class="steps">
           <li>Upload a radiograph image.</li>
-          <li>The Flask backend runs the saved classifier bundle.</li>
-          <li>The app fetches exercises from ExerciseAPI.dev or a safe local fallback.</li>
-          <li>You get a prediction and a practical rehabilitation starting point.</li>
+          <li>The Flask backend predicts the body part and the disorder from the image.</li>
+          <li>If the image looks normal, the app says no disorder.</li>
+          <li>If a disorder is detected, the app fetches exercises from ExerciseAPI.dev or a safe local fallback.</li>
         </ol>
       </section>
     </main>
