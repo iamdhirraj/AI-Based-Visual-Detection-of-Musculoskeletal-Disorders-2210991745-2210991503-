@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Musculoskeletal Disorder Predictor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='web.css') }}" />
+  </head>
+  <body>
+    <div class="bg-orb orb-a"></div>
+    <div class="bg-orb orb-b"></div>
+
+    <main class="shell">
+      <section class="hero-card">
+        <div class="hero-copy">
+          <p class="eyebrow">AI-Based Visual Detection of Musculoskeletal Disorders</p>
+          <h1>Upload an X-ray and get a prediction plus exercise recommendations</h1>
+          <p class="lede">
+            This local web app uses a trained model bundle on the server, then looks up exercise guidance through ExerciseAPI.dev when an API key is available.
+          </p>
+
+          <div class="status-row">
+            <span class="status-pill">Model: ready</span>
+            <span class="status-pill">API key: {{ 'loaded' if api_key_loaded else 'fallback mode' }}</span>
+            <span class="status-pill">Bundle: {{ model_path }}</span>
+          </div>
+        </div>
+
+        <form id="predictForm" class="upload-card">
+          <label class="dropzone" for="imageInput">
+            <input id="imageInput" name="image" type="file" accept="image/*" required />
+            <div class="dropzone-copy">
+              <strong>Drop an X-ray image here</strong>
+              <span>or click to choose a file</span>
+            </div>
+          </label>
+
+          <img id="preview" class="preview hidden" alt="Selected image preview" />
+
+          <div class="field-grid">
+            <label>
+              Body part
+              <select name="body_part">
+                <option value="general">General</option>
+                <option value="shoulder">Shoulder</option>
+                <option value="wrist">Wrist</option>
+                <option value="hand">Hand</option>
+                <option value="finger">Finger</option>
+                <option value="elbow">Elbow</option>
+                <option value="forearm">Forearm</option>
+                <option value="humerus">Humerus</option>
+              </select>
+            </label>
+
+            <label>
+              Exercise results
+              <select name="top_k">
+                <option value="2">2 recommendations</option>
+                <option value="3" selected>3 recommendations</option>
+                <option value="4">4 recommendations</option>
+              </select>
+            </label>
+          </div>
+
+          <button type="submit" class="primary-btn">Predict disorder</button>
+          <p id="formHint" class="hint">Uploads stay local to this server. Exercise suggestions are fetched server-side.</p>
+        </form>
+      </section>
+
+      <section id="results" class="results-grid hidden">
+        <article class="panel result-panel">
+          <p class="eyebrow">Prediction</p>
+          <h2 id="predictionLabel">Waiting for input</h2>
+          <p id="predictionConfidence" class="result-detail"></p>
+          <p id="predictionBodyPart" class="result-detail"></p>
+        </article>
+
+        <article class="panel result-panel">
+          <p class="eyebrow">Exercise recommendations</p>
+          <div id="recommendationList" class="recommendation-list"></div>
+        </article>
+      </section>
+
+      <section class="panel content-panel">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li>Upload a radiograph image.</li>
+          <li>The Flask backend runs the saved classifier bundle.</li>
+          <li>The app fetches exercises from ExerciseAPI.dev or a safe local fallback.</li>
+          <li>You get a prediction and a practical rehabilitation starting point.</li>
+        </ol>
+      </section>
+    </main>
+
+    <template id="recommendationTemplate">
+      <article class="exercise-card">
+        <h3></h3>
+        <p class="overview"></p>
+        <div class="meta"></div>
+        <div class="callout">
+          <strong>Instructions</strong>
+          <ul class="instructions"></ul>
+        </div>
+        <div class="callout muted">
+          <strong>Safety</strong>
+          <p class="safety"></p>
+        </div>
+      </article>
+    </template>
+
+    <script src="{{ url_for('static', filename='web.js') }}"></script>
+  </body>
+</html>

@@ -186,3 +186,25 @@ python muscle_disorder_ai.py predict --image /path/to/xray.png --model muscle_ai
 ```
 
 If the API key is missing, the script still works and falls back to safe local exercise recommendations.
+
+## Run the web upload app
+
+This is the browser version of the same workflow.
+
+```bash
+python web_app.py
+```
+
+Then open:
+
+```bash
+http://127.0.0.1:5000
+```
+
+If you want the app to use the live exercise API, set your key first:
+
+```bash
+export EXERCISE_API_KEY="your_api_key_here"
+```
+
+If the model bundle is missing, the app automatically builds a sample bundle for demo use.
