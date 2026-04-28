@@ -135,3 +135,29 @@ Notes:
 - `demo.py` generates PNG charts in the `demo_output/` folder.
 - `generate_pdf.py` creates `assets/mura-corrected-report.pdf`.
 - If you already have a virtual environment in `/Users/dheerajsharma/Desktop/sys/.venv`, activate that instead of creating a new one.
+
+## Train on your own dataset
+
+If you give a CSV dataset with one target column, use `train_dataset.py` to train models and create graphs.
+
+Example:
+
+```bash
+python train_dataset.py --data your_dataset.csv --target target
+```
+
+Quick test without your own dataset:
+
+```bash
+python train_dataset.py --sample
+```
+
+Outputs are saved in `training_output/`, including:
+- `class_distribution.png`
+- `model_comparison.png`
+- `confusion_matrix.png`
+- `roc_curve.png` for binary classification
+- `model_metrics.csv`
+- `classification_report.txt`
+- `summary.json`
+- `best_model.joblib`
