@@ -161,3 +161,28 @@ Outputs are saved in `training_output/`, including:
 - `classification_report.txt`
 - `summary.json`
 - `best_model.joblib`
+
+## Predict from an X-ray image and recommend exercises
+
+Use `muscle_disorder_ai.py` when you want image-based prediction plus exercise recommendations.
+
+Train on a folder dataset:
+
+```bash
+python muscle_disorder_ai.py train --data-dir /path/to/dataset --output-dir muscle_ai_output
+```
+
+Quick demo with a synthetic image dataset:
+
+```bash
+python muscle_disorder_ai.py train --sample --output-dir muscle_ai_output
+```
+
+Predict one image and fetch exercises from ExerciseAPI.dev:
+
+```bash
+export EXERCISE_API_KEY="your_api_key_here"
+python muscle_disorder_ai.py predict --image /path/to/xray.png --model muscle_ai_output/model_bundle.joblib --body-part wrist
+```
+
+If the API key is missing, the script still works and falls back to safe local exercise recommendations.

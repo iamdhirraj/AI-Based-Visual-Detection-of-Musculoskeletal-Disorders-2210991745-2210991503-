@@ -3,3 +3,5 @@ matplotlib
 pandas
 scikit-learn
 joblib
+requests
+pillow
