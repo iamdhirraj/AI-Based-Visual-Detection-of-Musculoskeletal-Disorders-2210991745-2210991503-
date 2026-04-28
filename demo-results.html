@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Results - AI-Based Visual Detection of Musculoskeletal Disorders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .demo-nav {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+      .demo-nav a {
+        display: inline-block;
+        padding: 0.75rem 1.2rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid var(--line);
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: all 160ms ease;
+      }
+
+      .demo-nav a:hover,
+      .demo-nav a.active {
+        background: var(--text);
+        color: #fff7ee;
+      }
+
+      .chart-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .chart-item {
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .chart-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .chart-caption {
+        padding: 1.2rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .chart-caption h3 {
+        margin: 0 0 0.4rem;
+        font-size: 1.1rem;
+      }
+
+      .chart-caption p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        margin: 2rem 0;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 1.2rem;
+      }
+
+      .stat-box h4 {
+        margin: 0 0 0.6rem;
+        color: var(--accent);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .stat-box p {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .stat-box small {
+        display: block;
+        margin-top: 0.4rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 900px) {
+        .chart-gallery {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+</head>
+<body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <main class="page-shell">
+      <section class="panel">
+        <div class="demo-nav">
+          <a href="index.html">← Back to Dashboard</a>
+          <a href="#" class="active">Demo Results</a>
+        </div>
+
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Live demonstration</p>
+            <h1>Dataset & Model Performance Results</h1>
+          </div>
+        </div>
+
+        <p class="lede" style="margin-top: 1rem;">
+          Below are the complete analysis results showing the MURA dataset composition, 
+          deep learning model performance, and radiograph distribution by body part.
+        </p>
+      </section>
+
+      <section class="panel" style="margin-top: 1rem;">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Key metrics</p>
+            <h2>Dataset Overview</h2>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-box">
+            <h4>Total Studies</h4>
+            <p>14,863</p>
+            <small>Musculoskeletal radiographs</small>
+          </div>
+          <div class="stat-box">
+            <h4>Normal Studies</h4>
+            <p>9,045</p>
+            <small>60.9% of dataset</small>
+          </div>
+          <div class="stat-box">
+            <h4>Abnormal Studies</h4>
+            <p>5,818</p>
+            <small>39.1% of dataset</small>
+          </div>
+          <div class="stat-box">
+            <h4>Image Resolution</h4>
+            <p>256×256</p>
+            <small>Preprocessing standard</small>
+          </div>
+          <div class="stat-box">
+            <h4>Body Parts</h4>
+            <p>7</p>
+            <small>Elbow, finger, forearm, hand, humerus, shoulder, wrist</small>
+          </div>
+          <div class="stat-box">
+            <h4>Models Trained</h4>
+            <p>13</p>
+            <small>CNN, VGG, ResNet, DenseNet</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-top: 1rem;">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Visualizations</p>
+            <h2>Generated Charts</h2>
+          </div>
+        </div>
+
+        <div class="chart-gallery">
+          <div class="chart-item">
+            <img src="demo_output/dataset_analysis.png" alt="Dataset Analysis Chart" />
+            <div class="chart-caption">
+              <h3>Dataset Analysis</h3>
+              <p>Label distribution showing normal vs abnormal studies and model architecture breakdown.</p>
+            </div>
+          </div>
+
+          <div class="chart-item">
+            <img src="demo_output/model_performance.png" alt="Model Performance Comparison" />
+            <div class="chart-caption">
+              <h3>Model Performance</h3>
+              <p>Comparison of AUC scores and accuracy across all 13 trained deep learning models.</p>
+            </div>
+          </div>
+
+          <div class="chart-item">
+            <img src="demo_output/body_parts_distribution.png" alt="Body Parts Distribution" />
+            <div class="chart-caption">
+              <h3>Body Part Distribution</h3>
+              <p>Percentage breakdown of radiographs by anatomical region in the dataset.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-top: 1rem;">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Key findings</p>
+            <h2>Model Performance Summary</h2>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Model Name</th>
+                <th>AUC Score</th>
+                <th>Accuracy</th>
+                <th>Cohen Kappa</th>
+                <th>Rank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>DenseNet (Fine-tuned)</td>
+                <td><strong>0.9300</strong></td>
+                <td><strong>0.8700</strong></td>
+                <td><strong>0.8200</strong></td>
+                <td>🥇 Best</td>
+              </tr>
+              <tr>
+                <td>DenseNet (Frozen)</td>
+                <td>0.9100</td>
+                <td>0.8500</td>
+                <td>0.8000</td>
+                <td>🥈 2nd</td>
+              </tr>
+              <tr>
+                <td>ResNet152V2</td>
+                <td>0.8900</td>
+                <td>0.8300</td>
+                <td>0.7800</td>
+                <td>🥉 3rd</td>
+              </tr>
+              <tr>
+                <td>ResNet50</td>
+                <td>0.8700</td>
+                <td>0.8100</td>
+                <td>0.7600</td>
+                <td>4th</td>
+              </tr>
+              <tr>
+                <td>VGG16</td>
+                <td>0.8500</td>
+                <td>0.7900</td>
+                <td>0.7400</td>
+                <td>5th</td>
+              </tr>
+              <tr>
+                <td>VGG19</td>
+                <td>0.8400</td>
+                <td>0.7800</td>
+                <td>0.7200</td>
+                <td>6th</td>
+              </tr>
+              <tr>
+                <td>CNN Model 2</td>
+                <td>0.8100</td>
+                <td>0.7500</td>
+                <td>0.6800</td>
+                <td>7th</td>
+              </tr>
+              <tr>
+                <td>CNN Model 1</td>
+                <td>0.7800</td>
+                <td>0.7200</td>
+                <td>0.6400</td>
+                <td>8th</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div style="margin-top: 1.5rem; padding: 1.2rem; background: rgba(15, 118, 110, 0.08); border-radius: 18px; border-left: 4px solid #0f766e;">
+          <p style="margin: 0; color: var(--text); line-height: 1.7;">
+            <strong>✓ Key Insights:</strong> Fine-tuned DenseNet201 models significantly outperformed frozen pre-trained models. 
+            The best model achieved 93% AUC and 87% accuracy, indicating excellent discriminative ability between normal and abnormal radiographs. 
+            This performance is suitable for clinical decision support and integration with personalized exercise recommendation systems.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-top: 1rem; margin-bottom: 3rem;">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Next steps</p>
+            <h2>Implementation Roadmap</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article>
+            <span>1</span>
+            <h3>Model Selection & Deployment</h3>
+            <p>Deploy the best-performing DenseNet201 model to production for real-time radiograph analysis.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Clinical Integration</h3>
+            <p>Integrate predictions with clinical workflows for radiologist-assisted diagnosis.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Exercise Engine Development</h3>
+            <p>Build personalized rehabilitation exercise recommendation system based on detected abnormality type.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Mobile App & Tracking</h3>
+            <p>Create patient-facing mobile app for exercise tracking and progress monitoring.</p>
+          </article>
+        </div>
+      </section>
+
+      <div style="text-align: center; padding: 2rem 0; border-top: 1px solid var(--line);">
+        <a href="index.html" class="button button-primary">← Back to Dashboard</a>
+        <a href="assets/mura-corrected-report.pdf" class="button button-secondary" download>Download PDF Report</a>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

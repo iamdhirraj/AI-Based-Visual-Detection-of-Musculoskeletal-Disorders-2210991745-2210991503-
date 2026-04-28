@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI-Based Visual Detection of Musculoskeletal Disorders</title>
+    <meta
+      name="description"
+      content="AI-powered detection and personalized exercise recommendations for musculoskeletal disorders using radiograph analysis."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient ambient-a"></div>
+    <div class="ambient ambient-b"></div>
+
+    <main class="page-shell">
+      <section class="hero panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Intelligent musculoskeletal disorder detection</p>
+          <h1>AI-Based Visual Detection of Musculoskeletal Disorders with Personalized Exercise Recommendation</h1>
+          <p class="lede">
+            Harness artificial intelligence to automatically detect abnormalities in radiographic studies
+            and receive personalized rehabilitation exercises tailored to your condition.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#dashboard">View dashboard</a>
+            <a class="button button-secondary" href="demo-results.html">
+              View Demo Results
+            </a>
+            <a class="button button-secondary" href="assets/mura-corrected-report.pdf" download>
+              Download PDF Report
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="Dataset summary">
+          <article class="stat-card">
+            <span>Total studies</span>
+            <strong>14,863</strong>
+            <small>9,045 normal + 5,818 abnormal</small>
+          </article>
+          <article class="stat-card">
+            <span>AI models trained</span>
+            <strong>13</strong>
+            <small>CNN, VGG, ResNet, and DenseNet architectures</small>
+          </article>
+          <article class="stat-card">
+            <span>Image size</span>
+            <strong>256 px</strong>
+            <small>Preprocessing target used throughout the notebook</small>
+          </article>
+        </div>
+      </section>
+
+      <section id="dashboard" class="dashboard-grid">
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Label balance</p>
+              <h2>Normal vs abnormal studies</h2>
+            </div>
+            <p class="panel-note">Counts taken from the notebook’s problem statement.</p>
+          </div>
+          <div id="labelChart" class="chart-slot"></div>
+          <ul class="legend">
+            <li><span class="swatch swatch-normal"></span>Normal studies: 9,045</li>
+            <li><span class="swatch swatch-abnormal"></span>Abnormal studies: 5,818</li>
+          </ul>
+        </article>
+
+        <article class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Architecture mix</p>
+              <h2>Model families explored</h2>
+            </div>
+            <p class="panel-note">Counts are based on the notebook’s 13 model sections.</p>
+          </div>
+          <div id="modelChart" class="chart-slot"></div>
+          <ul class="legend legend-compact">
+            <li><span class="swatch swatch-cnn"></span>CNN: 4</li>
+            <li><span class="swatch swatch-vgg"></span>VGG: 2</li>
+            <li><span class="swatch swatch-resnet"></span>ResNet: 2</li>
+            <li><span class="swatch swatch-densenet"></span>DenseNet: 5</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="panel content-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Notebook flow</p>
+            <h2>What the notebook does</h2>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article>
+            <span>1</span>
+            <h3>Load and label the dataset</h3>
+            <p>Walks the MURA directory structure, reads CSV path lists, and maps positive/negative labels.</p>
+          </article>
+          <article>
+            <span>2</span>
+            <h3>Preprocess images</h3>
+            <p>Resizes radiographs to 256 px, normalizes pixel intensity, and optionally applies simple augmentation.</p>
+          </article>
+          <article>
+            <span>3</span>
+            <h3>Train multiple architectures</h3>
+            <p>Benchmarks custom CNNs, VGG16/VGG19, ResNet152V2/ResNet50, and several DenseNet201 variants.</p>
+          </article>
+          <article>
+            <span>4</span>
+            <h3>Evaluate and compare</h3>
+            <p>Tracks AUC, accuracy, and Cohen’s kappa, then saves the trained models for later ensembling.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel content-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Reference data</p>
+            <h2>Notebook summary table</h2>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Value</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dataset</td>
+                <td>MURA</td>
+                <td>Musculoskeletal radiographs</td>
+              </tr>
+              <tr>
+                <td>Label classes</td>
+                <td>2</td>
+                <td>Normal and abnormal</td>
+              </tr>
+              <tr>
+                <td>Input resolution</td>
+                <td>256 x 256</td>
+                <td>Used for image loading and generators</td>
+              </tr>
+              <tr>
+                <td>Model families</td>
+                <td>4</td>
+                <td>CNN, VGG, ResNet, DenseNet</td>
+              </tr>
+              <tr>
+                <td>Saved model files</td>
+                <td>10+</td>
+                <td>Notebook saves one H5 file per major experiment</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
