@@ -212,10 +212,4 @@ Then open:
 http://127.0.0.1:5000
 ```
 
-If you want the app to use the live exercise API, set your key first:
-
-```bash
-export EXERCISE_API_KEY="your_api_key_here"
-```
-
 If the model bundle is missing, the app automatically builds a sample bundle for demo use.
