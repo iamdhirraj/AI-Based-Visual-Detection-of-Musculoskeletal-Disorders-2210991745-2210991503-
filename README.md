@@ -18,11 +18,6 @@ An intelligent platform combining radiographic analysis with personalized exerci
 ## Run locally
 Open `index.html` in a browser, or serve the folder with a simple static server.
 
-## Generate the corrected PDF
-
-```bash
-python3 generate_pdf.py
-```
 
 ## Machine Learning Concepts
 
