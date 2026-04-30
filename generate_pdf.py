@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from datetime import date
 from pathlib import Path
 
-OUTPUT = Path(__file__).resolve().parent / "assets" / "mura-corrected-report.pdf"
+OUTPUT = Path(__file__).resolve().parent / "assets" / "research-paper.pdf"
 
 WIDTH = 595.28
 HEIGHT = 841.89
@@ -30,6 +31,7 @@ def make_chart_bar(x: float, y: float, width: float, height: float, color: tuple
 
 
 def build_content() -> str:
+    updated_on = date.today().strftime('%d %b %Y')
     lines = []
     lines.append('0.12 0.18 0.24 rg 0 0 0 RG')
     lines.append(make_chart_bar(0, 770, WIDTH, 72, (0.08, 0.31, 0.34)))
@@ -76,6 +78,7 @@ def build_content() -> str:
     lines.append(text_ops(['Correction note'], 44, 410, size=16, leading=18, font='F1'))
     lines.append(text_ops([
         'This PDF replaces the incorrect attachment with a clean, notebook-derived report.',
+        f'Last updated: {updated_on}',
         'It is intentionally concise so it can be used as a dependable reference alongside the website.',
     ], 44, 390, size=11, leading=16, font='F2'))
 

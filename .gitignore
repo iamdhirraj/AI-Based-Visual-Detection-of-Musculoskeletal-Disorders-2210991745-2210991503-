@@ -1,3 +1,6 @@
 training_output/
 muscle_ai_output/
 __pycache__/
+.venv/
+.DS_Store
+assets/.DS_Store

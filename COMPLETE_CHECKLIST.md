@@ -22,7 +22,7 @@
   ├── ✓ QUICK_START.txt - This file
   ├── ✓ README.md - Project description
   ├── ✓ assets/
-  │   └── ✓ mura-corrected-report.pdf (2.8 KB)
+   │   └── ✓ research-paper.pdf (2.8 KB)
   └── ✓ demo_output/
       ├── ✓ dataset_analysis.png (62 KB)
       ├── ✓ model_performance.png (83 KB)
@@ -128,7 +128,7 @@ python3 demo.py
 - ✓ Implementation roadmap (4 steps)
 - ✓ Professional layout
 
-### PDF Report (assets/mura-corrected-report.pdf)
+### PDF Report (assets/research-paper.pdf)
 - ✓ Clean, professional layout
 - ✓ Dataset information
 - ✓ Model coverage details

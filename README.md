@@ -13,7 +13,7 @@ An intelligent platform combining radiographic analysis with personalized exerci
 - `index.html` - site entry point
 - `styles.css` - visual design
 - `script.js` - SVG charts rendered in the browser
-- `generate_pdf.py` - creates the corrected PDF report at `assets/mura-corrected-report.pdf`
+- `generate_pdf.py` - creates the corrected PDF report at `assets/research-paper.pdf`
 
 ## Run locally
 Open `index.html` in a browser, or serve the folder with a simple static server.
@@ -133,7 +133,7 @@ open index.html
 
 Notes:
 - `demo.py` generates PNG charts in the `demo_output/` folder.
-- `generate_pdf.py` creates `assets/mura-corrected-report.pdf`.
+- `generate_pdf.py` creates `assets/research-paper.pdf`.
 - If you already have a virtual environment in `/Users/dheerajsharma/Desktop/sys/.venv`, activate that instead of creating a new one.
 
 ## Train on your own dataset

@@ -75,7 +75,7 @@ FILES YOU HAVE:
 ✓ demo-results.html - Results page with charts
 ✓ demo.py - Generates all data & charts (RUN THIS FIRST!)
 ✓ styles.css - Professional styling
-✓ assets/mura-corrected-report.pdf - PDF report
+✓ assets/research-paper.pdf - PDF report
 ✓ demo_output/ - Contains 3 generated PNG charts
 ✓ DEMO_GUIDE.md - Detailed documentation
 ✓ run-demo.sh - Automated runner script
